@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+
+const api = {
+  base: "https://pokeapi.co/api/v2/pokemon/"
+}
 
 function App() {
+  const [query, setQuery] = useState('');
+
+  const search = evt => {
+    if(evt.key === "Enter") {
+      fetch (`${api.base}${query}`)
+      .then(res => res.json())
+      .then(result => {
+        setQuery('');
+        console.log(result);
+      })
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <div className="pokedex-search-box">
+        <input type="text" 
+        className="pokedex-search-bar" 
+        placeholder="Search for a Pokémon..."
+        onChange={e => setQuery(e.target.value)}
+        value={query}
+        onKeyPress={search}
+        ></input>
+      </div>
+      <div className="pokedex">
+      </div>
     </div>
   );
 }

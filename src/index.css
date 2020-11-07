@@ -10,7 +10,7 @@ body {
 }
 
 .wrapper {
-  background-color: #ff0000;
+  background-color: white;
   height: 100vh;
 }
 
@@ -38,9 +38,132 @@ body {
 
 .pokedex {
   text-align: center;
+  margin-top: 3rem;
 }
 
 .pokedex-left {
   text-transform: capitalize;
 }
 
+.pokedex-pokemon-type {
+  display: inline-block;
+  width: 66px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: .75rem;
+  font-weight: normal;
+  line-height: 1.5rem;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  text-transform: uppercase;
+  transition: opacity .4s;
+}
+
+#grass {
+  background-color: #7c5;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#poison {
+  background-color: #a59;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#fire {
+  background-color: #ff4422;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#flying {
+  background-color: #8899ff;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#water {
+  background-color: #3399ff;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#bug {
+  background-color: #aabb22;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#normal {
+  background-color: #aaaa99;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#dark {
+  background-color: #775544;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#electric {
+  background-color: #ffcc33;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#psychic {
+  background-color: #ff5599;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#ground {
+  background-color: #ddbb55;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#ice {
+  background-color: #66ccff;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#steel {
+  background-color: #aaaabb;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#fairy {
+  background-color: #ee99ee;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#fighting {
+  background-color: #bb5544;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#rock {
+  background-color: #bbaa66;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#ghost {
+  background-color: #6666bb;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}
+
+#dragon {
+  background-color: #7766ee;
+  border-radius: 6px;
+  border: 2px solid rgb(59, 59, 59);
+}

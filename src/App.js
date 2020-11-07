@@ -17,6 +17,9 @@ function App() {
         setQuery('');
         console.log(result);
       })
+      .catch(error => {
+        setPokemon({error: error.message})
+      })
     }
   }
 
@@ -33,6 +36,7 @@ function App() {
         return (
           <div className="pokedex-pokemon-type">
             <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+            <br></br>
             <div id={pokemon.types[1].type.name}>{pokemon.types[1].type.name}</div>
           </div>
         )

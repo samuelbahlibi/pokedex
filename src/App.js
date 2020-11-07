@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import pokeball from './assets/pokeball-tilt.png';
 
 const api = {
   base: "https://pokeapi.co/api/v2/pokemon/"
@@ -31,19 +32,33 @@ function App() {
     return (height / 10) + " m."
   }
 
+  const formatNumber = idNumber => {
+    if(idNumber >= 1 && idNumber <= 9)
+      return "00" + idNumber
+    else if (idNumber >= 10 && idNumber <= 99)
+      return "0" + idNumber
+    else 
+      return idNumber
+  }
+
   const types = type => {
       if(type.length === 2) {
         return (
           <div className="pokedex-pokemon-type">
-            <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
-            <br></br>
-            <div id={pokemon.types[1].type.name}>{pokemon.types[1].type.name}</div>
+            <div className="pokedex-main-container">
+              <div id={pokemon.types[1].type.name}>{pokemon.types[1].type.name}</div>
+            </div>
+            <div className="pokedex-fixer-container">
+              <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+            </div>
           </div>
         )
       } else {
         return (
           <div className="pokedex-pokemon-type">
-            <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+            <div className="pokedex-single-container">
+              <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+            </div>
           </div>
           )
       }
@@ -65,10 +80,11 @@ function App() {
           <div>
             {pokemon.sprites ? (
             <div className="pokedex">
+              <img src={pokeball} alt="pokeball"></img>
               <div className="pokedex-left">
                 {pokemon.name}
                 <br></br>
-                {pokemon.id}
+                {formatNumber(pokemon.id)}
               </div>
               <div>
               <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>

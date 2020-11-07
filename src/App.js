@@ -28,6 +28,23 @@ function App() {
     return (height / 10) + " m."
   }
 
+  const types = type => {
+      if(type.length === 2) {
+        return (
+          <div className="pokedex-pokemon-type">
+            <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+            <div id={pokemon.types[1].type.name}>{pokemon.types[1].type.name}</div>
+          </div>
+        )
+      } else {
+        return (
+          <div className="pokedex-pokemon-type">
+            <div id={pokemon.types[0].type.name}>{pokemon.types[0].type.name}</div>
+          </div>
+          )
+      }
+  }
+
   return (
     <div className="wrapper">
       <main>
@@ -42,6 +59,7 @@ function App() {
           ></input>
         </div>
           <div>
+            {pokemon.sprites ? (
             <div className="pokedex">
               <div className="pokedex-left">
                 {pokemon.name}
@@ -49,17 +67,16 @@ function App() {
                 {pokemon.id}
               </div>
               <div>
-              {/*<img src={!pokemon.sprites ? pokemon.sprites.front_default : ''}></img>
-              <br></br>*/}
-              {pokemon.types[0].type.name}
+              <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
               <br></br>
-              {pokemon.types[1].type.name}
+              {types(pokemon.types)}
               <br></br>
               {weightConverter(pokemon.weight)}
               <br></br>
               {heightConverter(pokemon.height)}
               </div>
             </div>
+            ) : ('')}
           </div>
         </main>
     </div>

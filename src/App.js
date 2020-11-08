@@ -2,12 +2,15 @@ import React, {useState} from 'react';
 import pokeball from './assets/pokeball-tilt.png';
 
 const api = {
-  base: "https://pokeapi.co/api/v2/pokemon/"
+  base: "https://pokeapi.co/api/v2/pokemon/",
+  description: "https://pokeapi.co/api/v2/pokemon-species/"
 }
 
 function App() {
   const [query, setQuery] = useState('');
   const [pokemon, setPokemon] = useState({});
+  const [secondQuery, setSecondQuery] = useState('');
+  const [pokedesc, setPokedesc] = useState({});
 
   const search = evt => {
     if(evt.key === "Enter") {
@@ -21,24 +24,32 @@ function App() {
       .catch(error => {
         setPokemon({error: error.message})
       })
+
+      fetch (`${api.description}${query}`)
+      .then(res => res.json())
+      .then(result => {
+        setPokedesc(result);
+        setSecondQuery('');
+        console.log(result);
+      })
     }
   }
 
   const weightConverter = weight => {
-    return Math.floor(weight / 10) + ".0 kg.";
+    return "WT " + Math.floor(weight / 10) + ".0 kg.";
   }
 
   const heightConverter = height => {
-    return (height / 10) + " m."
+    return "HT  " + (height / 10) + " m."
   }
 
   const formatNumber = idNumber => {
     if(idNumber >= 1 && idNumber <= 9)
-      return "00" + idNumber
+      return " 00" + idNumber + " "
     else if (idNumber >= 10 && idNumber <= 99)
-      return "0" + idNumber
+      return " 0" + idNumber + " "
     else 
-      return idNumber
+      return " " + idNumber + " "
   }
 
   const types = type => {
@@ -72,28 +83,33 @@ function App() {
           type="text" 
           className="pokedex-search-bar" 
           placeholder="Search for a Pokémon..."
-          onChange={e => setQuery(e.target.value)}
+          onChange={e => {setQuery(e.target.value); setSecondQuery(e.target.value);}}
           value={query}
+          value={secondQuery}
           onKeyPress={search}
           ></input>
         </div>
           <div>
             {pokemon.sprites ? (
             <div className="pokedex">
-              <img src={pokeball} alt="pokeball"></img>
               <div className="pokedex-left">
-                {pokemon.name}
-                <br></br>
-                {formatNumber(pokemon.id)}
+                <div className="pokedex-name-plate">
+                  <img src={pokeball} alt="pokeball"></img>
+                  {formatNumber(pokemon.id)}
+                  {pokemon.name}      
+                </div>
               </div>
               <div>
-              <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
-              <br></br>
-              {types(pokemon.types)}
-              <br></br>
-              {weightConverter(pokemon.weight)}
-              <br></br>
-              {heightConverter(pokemon.height)}
+                <div className="pokedex-pokemon-image">
+                  <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
+                </div>
+                {types(pokemon.types)}
+                <div className="pokedex-pokemon-ht-wt">
+                  <div className="pokedex-pokemon-ht-wt-right-container">
+                  {heightConverter(pokemon.height)}
+                  </div>
+                  {weightConverter(pokemon.weight)}
+                </div>
               </div>
             </div>
             ) : ('')}

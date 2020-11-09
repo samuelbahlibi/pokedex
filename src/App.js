@@ -102,7 +102,7 @@ function App() {
           ></input>
         </div>
           <div>
-            {pokemon.sprites ? (
+            {pokemon.sprites && pokedesc.flavor_text_entries ? (
             <div className="pokedex">
               <div className="pokedex-left">
                 <div className="pokedex-name-plate">

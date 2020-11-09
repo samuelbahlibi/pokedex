@@ -56,9 +56,21 @@ function App() {
     for(let i = 0; i < description.length; i++) {
       if(pokedesc.flavor_text_entries[i].language.name === "en"){
         return (
-          <div className="test">
+          <div className="pokedex-pokemon-description-content">
             {(pokedesc.flavor_text_entries[i].flavor_text).replace(//g, ' ')}
           </div>
+        )
+      }
+    }
+  }
+
+  const findName = name => {
+    for(let i = 0; i < name.length; i++) {
+      if(pokedesc.genera[i].language.name === "en") {
+        return (
+        <div className="pokedex-pokemon-nameplate-bottom">
+          {pokedesc.genera[i].genus}
+        </div>
         )
       }
     }
@@ -108,7 +120,8 @@ function App() {
                 <div className="pokedex-name-plate">
                   <img src={pokeball} alt="pokeball"></img>
                   {formatNumber(pokemon.id)}
-                  {pokemon.name}      
+                  {pokemon.name}
+                  {findName(pokedesc.genera)}      
                 </div>
               </div>
               <div>

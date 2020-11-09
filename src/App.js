@@ -57,7 +57,7 @@ function App() {
       if(pokedesc.flavor_text_entries[i].language.name === "en"){
         return (
           <div className="test">
-            {pokedesc.flavor_text_entries[i].flavor_text}
+            {(pokedesc.flavor_text_entries[i].flavor_text).replace(//g, ' ')}
           </div>
         )
       }

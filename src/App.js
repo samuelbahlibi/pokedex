@@ -52,6 +52,18 @@ function App() {
       return " " + idNumber + " "
   }
 
+  const findDescription = description => {
+    for(let i = 0; i < description.length; i++) {
+      if(pokedesc.flavor_text_entries[i].language.name === "en"){
+        return (
+          <div className="test">
+            {pokedesc.flavor_text_entries[i].flavor_text}
+          </div>
+        )
+      }
+    }
+  }
+
   const types = type => {
       if(type.length === 2) {
         return (
@@ -109,6 +121,9 @@ function App() {
                   {heightConverter(pokemon.height)}
                   </div>
                   {weightConverter(pokemon.weight)}
+                </div>
+                <div className="pokedex-pokemon-description">
+                  {findDescription(pokedesc.flavor_text_entries)}
                 </div>
               </div>
             </div>
